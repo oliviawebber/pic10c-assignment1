@@ -78,6 +78,12 @@ class Player {
 
       // You decide what functions you'll need...
 
+      // Function to allow the player's money to be both incremented and decremented depending on the sign
+      void update_money(int amt);
+
+      // Accessor for money private field
+      int get_money() const;
+
    private:
       int money;
       // You decide what extra fields (if any) you'll need...
