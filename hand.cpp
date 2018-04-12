@@ -12,14 +12,14 @@ void Hand::add_card() {
 }
 
 // Return a reference to the hand
-const std::vector<Card>& Hand::get_hand() {
+const std::vector<Card>& Hand::get_hand() const {
     return cards;
 }
 
 // Loop over all the cards and get the total points for the hand
 double Hand::get_total() const {
     double total = 0;
-    for(int i = 0; i < cards.size(); ++i) {
+    for(size_t i = 0; i < cards.size(); ++i) {
         int rank = cards[i].get_rank();
         if(rank < 10) {
             total += rank;

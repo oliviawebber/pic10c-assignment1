@@ -66,8 +66,10 @@ class Hand {
       // You decide what functions you'll need...
       // Generate a random card and add it to hand
       void add_card();
+
       // Return a reference to hand as an accessor
-      const std::vector<Card>& get_hand();
+      const std::vector<Card>& get_hand() const;
+
       // Return the total value of the hand
       double get_total() const;
 
