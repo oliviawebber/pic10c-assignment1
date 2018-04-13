@@ -102,8 +102,8 @@ int main(){
         cout << dealer_hand;
         cout << "The dealer's total is " << dealer_hand.get_total() << ".\n";
 
-        int p_total = player_hand.get_total();
-        int d_total = dealer_hand.get_total();
+        double p_total = player_hand.get_total();
+        double d_total = dealer_hand.get_total();
         bool p_bust = p_total > 7.5;
         bool d_bust = d_total > 7.5;
         bool p_beat_d = p_total > d_total;
