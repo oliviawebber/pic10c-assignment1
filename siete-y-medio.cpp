@@ -53,22 +53,29 @@ ostream& operator<<(ostream& out, const Card& c1) {
 int main(){
     /* --STATEMENTS-- */
     Player p1(STARTING_MONEY);
+
+    // Ending condition for the game is player runs out of money or dealer loses 900
     while(p1.get_money() > 0 && p1.get_money() < 1000) {
         Hand player_hand;
         Hand dealer_hand;
         int player_bet = get_bet(p1);
 
+        // Dummy letter initially so that comparison can be made in while loop
         char another_card = 'q';
         while(another_card != 'n') {
             cout << "Your cards:\n";
             cout << player_hand;
+
+            // If a player busts automatically end their turn without asking if they want another card
             if(player_hand.get_total() > 7.5) {
                 cout << "Your total is " << player_hand.get_total() << endl;
                 another_card = 'n';
                 break;
             }
+
             cout << "Your total is " << player_hand.get_total() << ". Do you want another card?(y/n) ";
             cin >> another_card;
+            // Input validation for another card
             while(another_card != 'y' && another_card != 'n') {
                 cout << "Please enter either y or n: ";
                 cin >> another_card;
@@ -76,16 +83,19 @@ int main(){
             if(another_card == 'y') {
                 player_hand.add_card();
                 cout << "New card:\n";
+                // Print out the newest card which is the last card that was added to the player's hand
                 cout << player_hand.get_hand()[player_hand.get_hand().size() - 1] << endl;
             }
         }
 
+        // Dealer stops getting cards once they reach 5.5
         while(dealer_hand.get_total() < 5.5) {
             cout << "Dealer's cards:\n";
             cout << dealer_hand;
             cout << "The dealer's total is " << dealer_hand.get_total() << ".\n";
             dealer_hand.add_card();
             cout << "\nNew card:\n";
+            // Same as with player this prints out the last card that was added to the dealer's hand
             cout << dealer_hand.get_hand()[dealer_hand.get_hand().size() - 1] << endl;
         }
         cout << "Dealer's cards:\n";
@@ -98,6 +108,7 @@ int main(){
         bool d_bust = d_total > 7.5;
         bool p_beat_d = p_total > d_total;
 
+        // If the player beats the dealer or the dealer busts, and the player does not bust they win
         if((p_beat_d || d_bust) && !p_bust) {
             cout << "\nYou win " << player_bet << ".\n\n";
             p1.update_money(player_bet);
@@ -105,11 +116,15 @@ int main(){
         else if(p_total == d_total) {
             cout << "\nYou tie.\n\n";
         }
+        // Since if the player does not win or tie they must lose can reduce the player losing normally and
+        // house advantage rule to one case
         else {
             cout << "\nYou lose " << player_bet << ".\n\n";
+            // Player loses money equal to their bet so add negative the bet
             p1.update_money(-player_bet);
         }
     }
+
     if(p1.get_money() < 0) {
         cout << "You have $0. Game Over!\nCome back when you have more money.\n\nBye!";
     }
