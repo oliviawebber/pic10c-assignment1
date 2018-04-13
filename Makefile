@@ -1,17 +1,10 @@
-objects = siete-y-medio.o cards.o hand.o player.o
-flags = -Wall -std=c++11
+COMP = g++
+OBJ = siete-y-medio.o cards.o hand.o player.o
+FLAGS = -Wall -std=c++11
+DEPS = cards.h
 
-siete-y-medio: $(objects)
-	g++ -o siete-y-medio.out $(objects)
+%.o: %.cpp $(DEPS)
+	$(COMP) $(FLAGS) -c $<
 
-siete-y-medio.o: siete-y-medio.cpp cards.h
-	g++ $(flags) -c siete-y-medio.cpp
-
-cards.o: cards.cpp cards.h
-	g++ $(flags) -c cards.cpp
-
-hand.o: hand.cpp cards.h
-	g++ $(flags) -c hand.cpp
-
-player.o: player.cpp cards.h
-	g++ $(flags) -c player.cpp
+siete-y-medio: $(OBJ)
+	$(COMP) -o siete-y-medio.out $(OBJ)
