@@ -1,4 +1,5 @@
 # pic10c-assignment1: Siete y Medio
+## Layton Webber
 
 This program is made to learn to use Git version control software in the development of a program. The underlying program being written will be able to play the card game '_siete y medio_'. The rules can be found at the [Wikipedia entry](https://en.wikipedia.org/wiki/Sette_e_mezzo), but are summarized below.
 
