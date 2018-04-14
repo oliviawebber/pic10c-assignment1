@@ -65,6 +65,9 @@ void record_gamelog(ofstream& file, int game_num, const Player& p1, int bet, con
 // Stub for main
 int main(){
     /* --STATEMENTS-- */
+    // Seed random number generator
+    srand(time(NULL));
+
     Player p1(STARTING_MONEY);
     int num_games = 1;
     ofstream gamelog;
@@ -145,7 +148,7 @@ int main(){
         }
     }
 
-    if(p1.get_money() < 0) {
+    if(p1.get_money() <= 0) {
         cout << "You have $0. Game Over!\nCome back when you have more money.\n\nBye!";
     }
     else {
