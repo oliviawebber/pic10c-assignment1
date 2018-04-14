@@ -16,6 +16,7 @@ const int PRINT_WIDTH = 20;
 int get_bet(const Player&);
 ostream& operator<<(ostream&, const Hand&);
 ostream& operator<<(ostream&, const Card&);
+void record_gamelog(ofstream&, int, const Player&, int, const Hand&, const Hand&);
 
 // Non member functions implementations (if any)
 int get_bet(const Player& p1) {
@@ -49,10 +50,25 @@ ostream& operator<<(ostream& out, const Card& c1) {
     return out;
 }
 
+void record_gamelog(ofstream& file, int game_num, const Player& p1, int bet, const Hand& p_hand, const Hand& d_hand) {
+    file << "-----------------------------------------------\n\n";
+    file << "Game number: " << game_num << "\tMoney left: $" << p1.get_money() << endl;
+    file << "Bet: " << bet << endl << endl;
+    file << "Your cards: \n";
+    file << p_hand;
+    file << "Your total: " << p_hand.get_total() << ".\n\n";
+    file << "Dealer's cards: \n";
+    file << d_hand;
+    file << "Dealer's total: " << d_hand.get_total() << ".\n\n";
+}
+
 // Stub for main
 int main(){
     /* --STATEMENTS-- */
     Player p1(STARTING_MONEY);
+    int num_games = 1;
+    ofstream gamelog;
+    gamelog.open("gamelog.txt");
 
     // Ending condition for the game is player runs out of money or dealer loses 900
     while(p1.get_money() > 0 && p1.get_money() < 1000) {
@@ -102,6 +118,10 @@ int main(){
         cout << dealer_hand;
         cout << "The dealer's total is " << dealer_hand.get_total() << ".\n";
 
+        // Record game and then increment number of games played
+        record_gamelog(gamelog, num_games, p1, player_bet, player_hand, dealer_hand);
+        num_games++;
+
         double p_total = player_hand.get_total();
         double d_total = dealer_hand.get_total();
         bool p_bust = p_total > 7.5;
@@ -131,6 +151,10 @@ int main(){
     else {
         cout << "Congratulations. You beat the casino!\n\nBye!";
     }
+
+    // Output last divider and then close final
+    gamelog << "-----------------------------------------------";
+    gamelog.close();
 
     return 0;
 }

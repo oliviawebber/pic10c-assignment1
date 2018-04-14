@@ -4,3 +4,6 @@
 
 # IDE folder
 .vscode
+
+# Program results
+gamelog.txt
