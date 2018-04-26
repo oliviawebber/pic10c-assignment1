@@ -149,10 +149,10 @@ int main(){
     }
 
     if(p1.get_money() <= 0) {
-        cout << "You have $0. Game Over!\nCome back when you have more money.\n\nBye!";
+        cout << "You have $0. Game Over!\nCome back when you have more money.\n\nBye!\n";
     }
     else {
-        cout << "Congratulations. You beat the casino!\n\nBye!";
+        cout << "Congratulations. You beat the casino!\n\nBye!\n";
     }
 
     // Output last divider and then close final
