@@ -19,3 +19,5 @@ The game is played using a ['_Spanish baraja_'](http://en.wikipedia.org/wiki/Spa
 In _siete y medio_, the values of the 1-7 ranks are face values, but sota, caballo, rey are each worth 0.5.
 
 The player starts with $100, and the goal is to reach $1000 without dropping to $0.
+
+The program also provides a log file after the game has finished that includes the bet and the hands of the player and dealer.
