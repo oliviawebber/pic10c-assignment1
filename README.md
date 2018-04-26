@@ -16,4 +16,6 @@ The outcomes after a round and their results are as follows:
 
 The game is played using a ['_Spanish baraja_'](http://en.wikipedia.org/wiki/Spanish_playing_cards) which is an old style of playing card from Spain. The deck is made up of four suits bastos _(clubs)_, oros _(golds)_, copas _(cups)_, espadas _(swords)_, and each suit has ranks 1-7 and 3 face cards the sota _(jack)_, caballo _(knight)_, rey _(king)_. 
 
-In _siete y medio_, the values of the 1-7 ranks are face values, but sota, caballo, rey are each worth 1/2.
+In _siete y medio_, the values of the 1-7 ranks are face values, but sota, caballo, rey are each worth 0.5.
+
+The player starts with $100, and the goal is to reach $1000 without dropping to $0.
